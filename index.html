@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vishal Anand - Pharmacy Portfolio</title>
+    <!-- Bootstrap CSS (v5.3.0) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for icons (v6.4.0) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --neu-bg: #d0d0d0;
+            --neu-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.7);
+            --neu-shadow-hover: 6px 6px 12px rgba(0, 0, 0, 0.3), -6px -6px 12px rgba(255, 255, 255, 0.8);
+            --text-color: #333;
+            --bg-color: var(--neu-bg);
+            --card-bg: var(--neu-bg);
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #f72585;
+            --text-color: #f8f9fa;
+            --bg-color: #1a1a2e;
+            --card-bg: rgba(26, 26, 46, 0.8);
+            --neu-bg: #1a1a2e;
+            --neu-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5), -4px -4px 8px rgba(58, 12, 163, 0.2);
+            --neu-shadow-hover: 6px 6px 12px rgba(0, 0, 0, 0.7), -6px -6px 12px rgba(58, 12, 163, 0.3);
+            --glass-bg: rgba(26, 26, 46, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Global Styles */
+        body {
+            background: var(--bg-color);
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+            color: var(--text-color);
+            padding-top: 70px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        p {
+            color: var(--text-color) !important;
+        }
+
+        /* Branding */
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Enhanced Navbar Styles */
+        .neu-navbar {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 0.8rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .brand-logo {
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: var(--neu-shadow);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .brand-logo:hover {
+            box-shadow: var(--neu-shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .nav-hover {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: var(--text-color) !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+
+        .nav-hover:hover::after,
+        .nav-hover.active::after {
+            width: 80%;
+        }
+
+        .nav-hover:hover {
+            transform: translateY(-2px);
+        }
+
+        .navbar-toggler.neu-btn {
+            border: none;
+            box-shadow: var(--neu-shadow);
+            padding: 0.5rem 0.75rem;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--neu-shadow);
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .theme-toggle:hover {
+            box-shadow: var(--neu-shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Neumorphic Card & Button */
+        .neu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--neu-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .neu-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--neu-shadow-hover);
+        }
+
+        .neu-btn {
+            background: var(--card-bg);
+            border: none;
+            border-radius: 20px;
+            box-shadow: var(--neu-shadow);
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .neu-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: #fff !important;
+            box-shadow: var(--neu-shadow-hover);
+        }
+
+        /* Hero Section */
+        .hero-row {
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 70px);
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: var(--neu-shadow);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.03);
+            box-shadow: var(--neu-shadow-hover);
+        }
+
+        .profile-img::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+            scroll-margin-top: 80px;
+        }
+
+        .section-divider {
+            border: none;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            margin: 3rem 0;
+            opacity: 0.5;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* Skill Badges */
+        .skill-badge {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            background: var(--card-bg);
+            box-shadow: var(--neu-shadow);
+            display: inline-flex;
+            align-items: center;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+
+        .skill-badge i {
+            margin-right: 0.5rem;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--neu-shadow-hover);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: #fff !important;
+        }
+
+        /* Experience Cards */
+        .exp-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: var(--neu-shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--neu-shadow-hover);
+        }
+
+        .exp-date {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* Activity Cards */
+        .activity-card {
+            box-shadow: var(--neu-shadow);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            height: 100%;
+            background: var(--card-bg);
+            border-radius: 20px;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--neu-shadow-hover);
+        }
+
+        /* Enhanced Footer Styles */
+        .neu-footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .contact-item {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--neu-shadow);
+            background: var(--card-bg);
+        }
+
+        .contact-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--neu-shadow-hover);
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: var(--neu-shadow);
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white !important;
+            box-shadow: var(--neu-shadow-hover);
+        }
+
+        .footer-link {
+            transition: all 0.3s ease;
+            color: var(--text-color);
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: var(--neu-shadow);
+            margin-bottom: 0.75rem;
+            background: var(--card-bg);
+        }
+
+        .footer-link:hover {
+            transform: translateX(5px);
+            color: var(--primary-color) !important;
+            box-shadow: var(--neu-shadow-hover);
+        }
+
+        /* Project Images */
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+
+        /* Form elements */
+        .form-control {
+            background-color: var(--card-bg) !important;
+            color: var(--text-color) !important;
+            border-color: var(--glass-border) !important;
+        }
+
+        ::placeholder {
+            color: var(--text-color) !important;
+            opacity: 0.7 !important;
+        }
+
+        /* Timeline style */
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 3px solid var(--primary-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            section {
+                padding: 3rem 0;
+            }
+
+            .profile-img {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Center all content on mobile */
+            body {
+                text-align: center;
+            }
+
+            .hero-row {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+
+            .hero-img {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .navbar-nav {
+                padding: 1rem 0;
+                gap: 0.75rem;
+            }
+
+            .nav-hover {
+                width: 100%;
+                text-align: center;
+                margin: 0.25rem 0;
+            }
+
+            .social-container {
+                justify-content: center !important;
+            }
+
+            .footer-link,
+            .contact-item {
+                text-align: center;
+            }
+
+            /* Center cards and content */
+            .neu-card,
+            .exp-card,
+            .activity-card,
+            .timeline,
+            .contact-item,
+            .social-link,
+            .footer-link {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 100%;
+            }
+
+            /* Center timeline items */
+            .timeline-item {
+                text-align: left;
+                padding-left: 30px;
+            }
+
+            /* Adjust timeline marker position */
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-item::before {
+                left: -25px;
+            }
+
+            /* Center skill badges */
+            .skill-badge {
+                display: inline-flex;
+                justify-content: center;
+                margin: 0.5rem auto;
+            }
+
+            /* Center form elements */
+            .form-control {
+                text-align: center;
+            }
+
+            /* Center all headings */
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                text-align: center !important;
+            }
+
+            /* Center lists */
+            ul,
+            ol {
+                padding-left: 20px;
+                text-align: left;
+                display: inline-block;
+                width: 100%;
+            }
+
+            /* Center the profile image */
+            .profile-img {
+                margin: 0 auto;
+            }
+
+            /* Center the hero content */
+            .hero-content {
+                text-align: center;
+            }
+
+            /* Center the dynamic text */
+            #dynamic-text {
+                justify-content: center;
+            }
+
+            /* Center the buttons */
+            .d-flex.justify-content-center {
+                justify-content: center !important;
+            }
+
+            /* Center navigation items */
+            .navbar-nav {
+                align-items: center;
+            }
+
+            /* Center form status messages */
+            #formStatus {
+                text-align: center !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .profile-img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .section-title::after {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            #dynamic-text {
+                font-size: 1.5rem;
+                min-height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .skill-badge {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            /* Make timeline more compact */
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                left: -20px;
+                width: 15px;
+                height: 15px;
+            }
+
+            /* Center form submit button */
+            #contactForm button[type="submit"] {
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        /* Animation for dynamic text */
+        #dynamic-text {
+            min-height: 60px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="80" tabindex="0">
+    <!-- Enhanced Navbar Section -->
+    <nav class="navbar navbar-expand-lg fixed-top neu-navbar" data-aos="fade-down">
+        <div class="container">
+            <a class="navbar-brand gradient-text fw-bold" href="#">
+                <div class="brand-logo">
+                    <i class="fas fa-prescription-bottle-alt me-2"></i>Vishal Anand
+                </div>
+            </a>
+            <button class="navbar-toggler neu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link nav-hover" href="#home" data-aos="fade-down">
+                            <i class="fas fa-home me-1"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-hover" href="#education" data-aos="fade-down">
+                            <i class="fas fa-graduation-cap me-1"></i> Education
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-hover" href="#experience" data-aos="fade-down">
+                            <i class="fas fa-briefcase me-1"></i> Experience
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-hover" href="#skills" data-aos="fade-down">
+                            <i class="fas fa-code me-1"></i> Skills
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-hover" href="#projects" data-aos="fade-down">
+                            <i class="fas fa-project-diagram me-1"></i> Projects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-hover" href="#activities" data-aos="fade-down">
+                            <i class="fas fa-running me-1"></i> Activities
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                            <i class="fas fa-moon" id="themeIcon"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Updated -->
+    <section id="home" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center justify-content-center" style="min-height: calc(85vh - 70px);">
+                <div class="col-lg-6 order-lg-2 text-center mb-4 mb-lg-0" data-aos="fade-left">
+                    <div class="profile-img mx-auto" style="width: 280px; height: 280px;">
+                        <img src="vishal.jpg" alt="Vishal Anand" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1 text-center" data-aos="fade-right">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold gradient-text mb-2">VISHAL ANAND</h1>
+                        <p class="lead fs-4 mb-3">B.Pharmacy | KL University</p>
+                        <h3 id="dynamic-text" class="fw-bold mb-3 gradient-text" style="min-height: 60px;"></h3>
+                        <p class="lead mb-4">A fourth year Pharmacy student with an innovative research project, aiming to apply my academic knowledge to real-world challenges and gain valuable experience in developing new pharmaceutical products.</p>
+
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="#contact" class="neu-btn" data-aos="fade-up">
+                                <i class="fas fa-paper-plane me-2"></i> Contact
+                            </a>
+                            <a href="https://drive.google.com/file/d/1N18JJF4RahD4PqrCEa9Emwk79bmMenBn/view?usp=sharing" target="_blank" class="neu-btn" data-aos="fade-up" data-aos-delay="100">
+                                <i class="fas fa-download me-2"></i> Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text section-title" data-aos="fade-up">Education</h2>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8" data-aos="fade-up">
+                    <div class="neu-card p-4">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4>KL University, Vijayawada</h4>
+                                <p class="mb-1">Bachelor of Pharmacy</p>
+                                <p class="mb-1">2021 - 2025 | Current CGPA: 7.8/10</p>
+                                <p class="mb-0">4th Year - Odd Semester</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>D.N.Singh College, Bhagalpur</h4>
+                                <p class="mb-1">Intermediate (PCB)</p>
+                                <p class="mb-0">2018 - 2020 | Percentage: 62.4%</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4>R.J.High School, Bhagalpur</h4>
+                                <p class="mb-0">2018 | Percentage: 60.4%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text section-title" data-aos="fade-up">Experience</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6" data-aos="fade-up">
+                    <div class="exp-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3">
+                                <i class="fas fa-industry fa-3x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Industrial Training</h5>
+                                <p class="exp-date mb-0">Annora Pharma Private Limited</p>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled ps-4">
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> Performed dissolution and disintegration tests to ensure product quality and consistency</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> Applied quality control techniques using advanced HPLC and dissolution equipment effectively</li>
+                            <li><i class="fas fa-check-circle me-2 text-primary"></i> Enhanced understanding of pharmaceutical processes through practical experience in industry settings</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="exp-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3">
+                                <i class="fas fa-users fa-3x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Leadership Experience</h5>
+                                <p class="exp-date mb-0">KL University Clubs</p>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled ps-4">
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> Co-Ordinator Of Kutumb Club</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> Central Volunteer for Youth Red Cross (YRC)</li>
+                            <li><i class="fas fa-check-circle me-2 text-primary"></i> Volunteer For NSS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text section-title" data-aos="fade-up">Skills</h2>
+            <div class="row">
+                <div class="col-12 col-md-6" data-aos="zoom-in">
+                    <div class="neu-card p-4 h-100">
+                        <h4 class="text-center mb-4">Technical Skills</h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="skill-badge"><i class="fas fa-flask"></i> Pharmaceutical Testing</span>
+                            <span class="skill-badge"><i class="fas fa-microscope"></i> HPLC Analysis</span>
+                            <span class="skill-badge"><i class="fas fa-pills"></i> Drug Formulation</span>
+                            <span class="skill-badge"><i class="fas fa-chart-line"></i> Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="neu-card p-4 h-100">
+                        <h4 class="text-center mb-4">Computer Skills</h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="skill-badge"><i class="fas fa-file-word"></i> MS Word</span>
+                            <span class="skill-badge"><i class="fas fa-file-excel"></i> MS Excel</span>
+                            <span class="skill-badge"><i class="fas fa-file-powerpoint"></i> PowerPoint</span>
+                            <span class="skill-badge"><i class="fas fa-paint-brush"></i> CANVA</span>
+                            <span class="skill-badge"><i class="fas fa-robot"></i> AI & ChatGPT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="neu-card p-4 h-100">
+                        <h4 class="text-center mb-4">Soft Skills</h4>
+                        <div class="d-flex flex-wrap justify-content-center">
+                            <span class="skill-badge"><i class="fas fa-comments"></i> Communication</span>
+                            <span class="skill-badge"><i class="fas fa-pen-fancy"></i> Writing</span>
+                            <span class="skill-badge"><i class="fas fa-tasks"></i> Organization</span>
+                            <span class="skill-badge"><i class="fas fa-users"></i> Leadership</span>
+                            <span class="skill-badge"><i class="fas fa-lightbulb"></i> Problem-Solving</span>
+                            <span class="skill-badge"><i class="fas fa-people-arrows"></i> Team Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text section-title" data-aos="fade-up">Projects</h2>
+            <div class="row g-4">
+                <div class="col-12" data-aos="fade-up">
+                    <div class="neu-card p-4">
+                        <h4>Smart Village Revolution (2022)</h4>
+                        <p>As a team leader of 7 members, I took a lead role to coordinate and instruct the group members about their work. This project focused on developing sustainable solutions for rural healthcare access and pharmaceutical distribution in remote areas.</p>
+                        <ul>
+                            <li>Developed a framework for mobile medical units in rural areas</li>
+                            <li>Created awareness programs about basic healthcare and medicine usage</li>
+                            <li>Designed a model for efficient medicine distribution in villages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text section-title" data-aos="fade-up">Activities & Achievements</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in">
+                    <div class="neu-card h-100">
+                        <div class="p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-certificate fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Certifications</h5>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled ps-4">
+                                <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> NATIONAL CONFERENCE - KL University CTD4-22</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> World Pharmacist Day - KL University 2022</li>
+                                <li><i class="fas fa-check-circle me-2 text-primary"></i> Certificate of Ethics Training</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="neu-card h-100">
+                        <div class="p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-trophy fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Achievements</h5>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled ps-4">
+                                <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> First Blood Donor in AP through YRC AP App</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> Central Volunteer for Youth Red Cross (YRC)</li>
+                                <li><i class="fas fa-check-circle me-2 text-primary"></i> Active member of multiple university clubs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="neu-card h-100">
+                        <div class="p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-users fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Club Activities</h5>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled ps-4">
+                                <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> Actively Member Of VACHAS, KUTUMB, KL FILM, FUSION Club</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2 text-primary"></i> Contributor in different event committees</li>
+                                <li><i class="fas fa-check-circle me-2 text-primary"></i> CANVA Designer for club events</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="text-center mb-5 gradient-text section-title" data-aos="fade-up">Get In Touch</h2>
+            <div class="row g-4">
+                <!-- Contact Column -->
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="neu-card p-4 h-100">
+                        <h4 class="gradient-text mb-4">Contact Info</h4>
+                        <div class="contact-item">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-envelope me-3 fa-lg"></i>
+                                <a href="mailto:2100530106bpharmacy@gmail.com">2100530106bpharmacy@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-phone me-3 fa-lg"></i>
+                                <a href="tel:+919135586615">+91 XXXXXXXXXX</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-map-marker-alt me-3 fa-lg"></i>
+                                <span>Ward No. 04, Mararji Bhawan, Jotha, Banka, BIHAR- PIN: 813109</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Column -->
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="neu-card p-4 h-100">
+                        <h4 class="gradient-text mb-4">Send Me a Message</h4>
+                        <form id="contactForm" action="https://formspree.io/f/mnnpzkeb" method="POST">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control bg-transparent border-secondary" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" name="email" class="form-control bg-transparent border-secondary" placeholder="Your Email" required>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" name="subject" class="form-control bg-transparent border-secondary" placeholder="Subject">
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control bg-transparent border-secondary" rows="5" placeholder="Your Message" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="neu-btn">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="formStatus" class="mt-3 text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer Section -->
+    <footer class="neu-footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="neu-card p-4 h-100">
+                        <h4 class="gradient-text mb-4">About Me</h4>
+                        <p>A fourth year Pharmacy student with an innovative research project, aiming to apply my academic knowledge to real-world challenges and gain valuable experience in developing new pharmaceutical products. Seeking practical experience in a dynamic environment.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="neu-card p-4 h-100">
+                        <h5 class="gradient-text mb-4">Quick Links</h5>
+                        <a href="#home" class="footer-link">Home</a>
+                        <a href="#education" class="footer-link">Education</a>
+                        <a href="#experience" class="footer-link">Experience</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="neu-card p-4 h-100">
+                        <h5 class="gradient-text mb-4">More Links</h5>
+                        <a href="#skills" class="footer-link">Skills</a>
+                        <a href="#projects" class="footer-link">Projects</a>
+                        <a href="#activities" class="footer-link">Activities</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="neu-card p-4 h-100">
+                        <h5 class="gradient-text mb-4">Connect With Me</h5>
+                        <div class="d-flex justify-content-center gap-3 mb-4">
+                            <a href="tel:+919135586615" class="social-link">
+                                <i class="fas fa-phone fa-lg"></i>
+                            </a>
+                            <a href="mailto:2100530106bpharmacy@gmail.com" class="social-link">
+                                <i class="fas fa-envelope fa-lg"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fas fa-map-marker-alt fa-lg"></i>
+                            </a>
+                        </div>
+                        <div class="text-center">
+                            <a href="#contact" class="neu-btn">
+                                <i class="fas fa-paper-plane me-2"></i>Contact Me
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="text-center mt-5 pt-4">
+                <p class="mb-0 small">&copy; 2025 Vishal Anand. All rights reserved.</p>
+            </div> -->
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            once: false,
+            easing: 'ease-in-out'
+        });
+
+        // Typewriter effect for hero section
+        const typeStrings = ["Pharmacy Student", "Research Enthusiast", "Future Pharmacist"];
+        let currentString = 0, currentChar = 0;
+        const dynamicText = document.getElementById("dynamic-text");
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeWriter() {
+            const currentText = typeStrings[currentString];
+
+            if (isDeleting) {
+                dynamicText.textContent = currentText.substring(0, currentChar - 1);
+                currentChar--;
+                typingSpeed = 50;
+            } else {
+                dynamicText.textContent = currentText.substring(0, currentChar + 1);
+                currentChar++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && currentChar === currentText.length) {
+                isDeleting = true;
+                typingSpeed = 1500; // Pause at end
+            } else if (isDeleting && currentChar === 0) {
+                isDeleting = false;
+                currentString = (currentString + 1) % typeStrings.length;
+                typingSpeed = 500; // Pause before typing next
+            }
+
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        // Start the typewriter effect after 1 second
+        setTimeout(typeWriter, 1000);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active class to current section in navbar
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-hover');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+
+                // Show loading state
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+                formStatus.innerHTML = '';
+                formStatus.className = 'mt-3 text-center';
+
+                try {
+                    const formData = new FormData(this);
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        formStatus.innerHTML = '<div class="alert alert-success">Message sent successfully! I\'ll get back to you soon.</div>';
+                        this.reset();
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Failed to send message');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    formStatus.innerHTML = `<div class="alert alert-danger">${error.message || 'There was a problem sending your message. Please try again later.'}</div>`;
+                    formStatus.className = 'mt-3 text-center';
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                }
+            });
+        }
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Check for saved theme preference or use system preference
+        const currentTheme = localStorage.getItem('theme') ||
+            (prefersDarkScheme.matches ? 'dark' : 'light');
+
+        // Apply the current theme
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // Toggle theme when button is clicked
+        themeToggle.addEventListener('click', function () {
+            let theme;
+            if (document.documentElement.getAttribute('data-theme') === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                theme = 'light';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                theme = 'dark';
+            }
+            // Save the theme preference
+            localStorage.setItem('theme', theme);
+        });
+    </script>
+</body>
+
+</html>
